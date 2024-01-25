@@ -7,6 +7,7 @@ import FormikForm from "./formik/FormikForm";
 import RegexDemo from "./RegexDemo";
 import DataTableReact from "./datatable/DataTableReact";
 import Ref from "./ref/Ref";
+import Bootstrap from "./bootstrap/Bootstrap";
 
 import { CustomHook } from "./customHook/CustomHook";
 
@@ -21,12 +22,18 @@ const Div = styled.div`
 `;
 function App() {
   const [count, setCount] = useState(0);
+  const [showB, setShowB] = useState(false);
+  const [showR, setShowR] = useState(false);
+
+const handleRef = () => {
+  setShowR(showR=>!showR)
+}
+
 
   return (
     <>
       <Div>i am styled-components</Div>
       <hr />
-
       <Router>
         <nav>
           <ul>
@@ -55,7 +62,7 @@ function App() {
               <Link to="/Ref">Ref</Link>
             </li>
             <li>
-              <Link to="/Bootstrap1">Bootstrap1</Link>
+              <Link to="/bootstrap">my Bootstrap</Link>
             </li>
           </ul>
         </nav>
@@ -69,9 +76,15 @@ function App() {
           <Route path="/regex" element={<RegexDemo />} />
           <Route path="/datatable" element={<DataTableReact />} />
           <Route path="/Ref" element={<Ref />} />
-       
+          <Route path="/bootstrap" element={<Bootstrap />} />
         </Routes>
       </Router>
+      <button onClick={handleRef}> toggle ref</button>
+      <br />
+      <button onClick={()=>setShowB(!showB)}>toggle bootstrap</button>
+
+      {showB && <Bootstrap />}
+      {showR && <Ref />}
     </>
   );
 }
