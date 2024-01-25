@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Fetch() {
   const [data, setData] = useState([]);
-
+//this is comment
   async function fetchData(url) {
     try {
       let response = await fetch(url);
